@@ -90,7 +90,7 @@ export const addCard = (listKey, cardTitle) =>
 
 export const getCard = listKey => db.ref(`cards/${listKey}`).once('value');
 
-export const card = async (listKey, cardKey, card) => {
+export const updateCard = async (listKey, cardKey, card) => {
     await cardsRef
         .child(listKey)
         .child(cardKey)

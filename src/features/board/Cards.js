@@ -2,7 +2,7 @@ import { DropTarget } from 'react-dnd';
 import React, { Component } from 'react';
 
 import CardContainer from './CardContainer';
-import { addCard, deleteCard, card, moveCard, getCard } from '../../core/api/db';
+import { addCard, deleteCard, updateCard, moveCard, getCard } from '../../core/api/db';
 import { FormCreation } from './FormCreation';
 import { ItemTypes } from '../../core/constants';
 import { mergeDataWithKey } from '../../shared/utils';
@@ -59,7 +59,7 @@ class Cards extends Component {
     };
 
     handleEditCard = (listKey, cardKey, card) => {
-        return card(listKey, cardKey, card).then(() => {
+        return updateCard(listKey, cardKey, card).then(() => {
             const updatedCards = { ...this.state.cards };
             const cardIndex = updatedCards[listKey].findIndex(card => card.key === cardKey);
             updatedCards[listKey][cardIndex] = {
